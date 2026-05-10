@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>SocialNet</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="static/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="static/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="static/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="static/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+       <style>
+           /* General */
+form {
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  padding: 15px;
+}
+
+/* Post Card */
+.post-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.post-header {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.post-info {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.post-image img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Emoji Picker */
+.emoji-picker {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.emoji-picker img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, border 0.2s;
+  border-radius: 50%;
+}
+
+.emoji-picker img:hover {
+  transform: scale(1.2);
+}
+
+/* Selected emoji effect */
+.emoji-picker img.active {
+  border: 3px solid #1877f2;
+  transform: scale(1.3);
+}
+
+/* Comment Box */
+textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  resize: vertical;
+  font-size: 14px;
+}
+
+/* Buttons */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #145dbf;
+}
+
+.btn.secondary {
+  background: #ddd;
+  color: #333;
+}
+
+.btn.secondary:hover {
+  background: #bbb;
+}
+
+/* Emoji Stats */
+.emoji-stats {
+  margin: 20px 0;
+  padding: 12px;
+  background: #f5f6f7;
+  border-radius: 8px;
+}
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.stats-row img {
+  vertical-align: middle;
+}
+
+/* Comment Section */
+.comment-section {
+  margin-top: 20px;
+}
+
+.comment-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.comment-user {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.comment-text {
+  font-size: 14px;
+  color: #444;
+}
+
+       </style>
+   </head>
+   <!-- body -->
+   <body class="main-layout">
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="static/images/loading.gif" alt="#"/></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <h1 style="color:white;font-size:xx-large;">Social Net</h1>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-7 col-lg-7 col-md-9 col-sm-9">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                           <ul class="navbar-nav mr-auto">
+                              {% include 'menu/user.html'  %}
+                           </ul>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </header>
+      <!-- end header inner -->
+      <!-- end header -->
+        <div class="back_re">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="title">
+                      <h2>Comment</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--  contact -->
+      <div class="contact">
+  <div class="container" style="margin-left:15%;margin-bottom :15%;">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+
+       <form id="form1" name="form1" method="post" action="/postcomment" onsubmit="return validateForm()">
+
+  <!-- Post Section -->
+  {% for item in data %}
+  <div class="post-card" id="post{{item[0]}}">
+    <div class="post-header" id="user{{item[0]}}">
+      <strong>UserName:</strong> {{item[1]}}
+    </div>
+    <div class="post-info" id="info{{item[0]}}">
+      <strong>Info:</strong> {{item[2]}}
+    </div>
+    <div class="post-image" id="img{{item[0]}}">
+      <img src="static/upload/{{item[3]}}" alt="Post Image">
+    </div>
+  </div>
+  {% endfor %}
+
+  <!-- Emoji Selection -->
+  <div class="form-group">
+    <label>Choose Emoji</label>
+    <input type="hidden" name="ar" id="ar">
+    <div class="emoji-picker">
+      <img src="static/Smile/1.png" id="e1" onclick="changeImage(1)">
+      <img src="static/Smile/2.png" id="e2" onclick="changeImage(2)">
+      <img src="static/Smile/3.png" id="e3" onclick="changeImage(3)">
+      <img src="static/Smile/4.png" id="e4" onclick="changeImage(4)">
+      <img src="static/Smile/5.png" id="e5" onclick="changeImage(5)">
+      <img src="static/Smile/6.png" id="e6" onclick="changeImage(6)">
+    </div>
+    <!-- hidden feedback icons -->
+    <div class="emoji-feedback">
+      <img src="static/img1/aas.png" id="t1" style="display:none;">
+      <img src="static/img1/aas.png" id="t2" style="display:none;">
+      <img src="static/img1/aas.png" id="t3" style="display:none;">
+      <img src="static/img1/aas.png" id="t4" style="display:none;">
+      <img src="static/img1/aas.png" id="t5" style="display:none;">
+      <img src="static/img1/aas.png" id="t6" style="display:none;">
+    </div>
+  </div>
+
+  <!-- Comment Input -->
+  <div class="form-group">
+    <label>Post Comment</label>
+    <textarea name="comm" id="comm" placeholder="Write your comment..." required></textarea>
+  </div>
+
+  <!-- Submit -->
+  <div class="form-actions">
+    <button type="submit" class="btn" id="submitBtn">Submit</button>
+    <button type="reset" class="btn secondary" id="resetBtn">Reset</button>
+  </div>
+
+  <!-- Emoji Statistics -->
+  <div class="emoji-stats" id="stats">
+    <h3>Comment Info</h3>
+    <div class="stats-row">
+      <img src="static/Smile/1.png" width="40">{{smile1}} user(s)
+      <img src="static/Smile/2.png" width="40">{{smile2}} user(s)
+      <img src="static/Smile/3.png" width="40">{{smile3}} user(s)
+      <img src="static/Smile/4.png" width="40">{{smile4}} user(s)
+      <img src="static/Smile/5.png" width="40">{{smile5}} user(s)
+      <img src="static/Smile/6.png" width="40">{{smile6}} user(s)
+    </div>
+  </div>
+
+  <!-- Comment List -->
+  <div class="comment-section" id="comments">
+    <h3>All Comments</h3>
+    {% for item in data1 %}
+    <div class="comment-card" id="cmt{{item[0]}}">
+      <div class="comment-user" id="cuser{{item[0]}}">{{item[2]}}</div>
+      <div class="comment-text" id="ctxt{{item[0]}}">{{item[3]}}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- end contact -->
+      <!--  footer -->
+      <footer>
+         <div class="footer">
+            <h1 style="color:white;font-size:xx-large;">Social Net</h1>
+            <div class="copyright">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-10 offset-md-1">
+                        <p>© <script>document. write( new Date(). getFullYear() );</script> All Rights Reserved.</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/bootstrap.bundle.min.js"></script>
+      <script src="static/js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="static/js/custom.js"></script>
+   <!--flash Start-->
+   {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  {% endif %}
+{% endwith %}
+<script>
+function validateForm() {
+    let emoji = document.getElementById("ar").value;
+
+    console.log("Selected emoji:", emoji);  // 👈 check this in browser console
+
+    if (!emoji) {
+        alert("Please select an emoji");
+        return false;
+    }
+    return true;
+}
+</script>
+
+<script language="javascript">
+
+ function changeImage() {
+
+
+                      document.getElementById("ar").value = "6";
+                       img = document.getElementById("imgClickAndChange");
+
+        img.style.width = "100px";
+        img.style.height = "100px";
+
+         img1 = document.getElementById("imgClickAndChange1");
+          img2 = document.getElementById("imgClickAndChange2");
+           img3 = document.getElementById("imgClickAndChange3");
+            img4 = document.getElementById("imgClickAndChange4");
+             img5 = document.getElementById("imgClickAndChange5");
+
+         img1.style.width = "50px";
+        img1.style.height = "50px";
+        img2.style.width = "50px";
+        img2.style.height = "50px";
+        img3.style.width = "50px";
+        img3.style.height = "50px";
+        img4.style.width = "50px";
+        img4.style.height = "50px";
+        img5.style.width = "50px";
+        img5.style.height = "50px";
+
+
+
+
+
+		      }
+  function changeImage1() {
+
+                    document.getElementById("ar").value = "5";
+
+                     img = document.getElementById("imgClickAndChange1");
+
+        img.style.width = "100px";
+        img.style.height = "100px";
+
+         img1 = document.getElementById("imgClickAndChange");
+          img2 = document.getElementById("imgClickAndChange2");
+           img3 = document.getElementById("imgClickAndChange3");
+            img4 = document.getElementById("imgClickAndChange4");
+             img5 = document.getElementById("imgClickAndChange5");
+
+          img1.style.width = "50px";
+        img1.style.height = "50px";
+        img2.style.width = "50px";
+        img2.style.height = "50px";
+        img3.style.width = "50px";
+        img3.style.height = "50px";
+        img4.style.width = "50px";
+        img4.style.height = "50px";
+        img5.style.width = "50px";
+        img5.style.height = "50px";
+
+    }
+
+    function changeImage2() {
+
+
+                      document.getElementById("ar").value = "4";
+                       img = document.getElementById("imgClickAndChange2");
+
+        img.style.width = "100px";
+        img.style.height = "100px";
+
+
+          img1 = document.getElementById("imgClickAndChange1");
+          img2 = document.getElementById("imgClickAndChange");
+           img3 = document.getElementById("imgClickAndChange3");
+            img4 = document.getElementById("imgClickAndChange4");
+             img5 = document.getElementById("imgClickAndChange5");
+
+          img1.style.width = "50px";
+        img1.style.height = "50px";
+        img2.style.width = "50px";
+        img2.style.height = "50px";
+        img3.style.width = "50px";
+        img3.style.height = "50px";
+        img4.style.width = "50px";
+        img4.style.height = "50px";
+        img5.style.width = "50px";
+        img5.style.height = "50px";
+
+    } function changeImage3()
+	 {
+
+
+
+                  document.getElementById("ar").value = "3";
+
+                    img = document.getElementById("imgClickAndChange3");
+
+        img.style.width = "100px";
+        img.style.height = "100px";
+
+          img1 = document.getElementById("imgClickAndChange1");
+          img2 = document.getElementById("imgClickAndChange2");
+           img3 = document.getElementById("imgClickAndChange");
+            img4 = document.getElementById("imgClickAndChange4");
+             img5 = document.getElementById("imgClickAndChange5");
+
+          img1.style.width = "50px";
+        img1.style.height = "50px";
+        img2.style.width = "50px";
+        img2.style.height = "50px";
+        img3.style.width = "50px";
+        img3.style.height = "50px";
+        img4.style.width = "50px";
+        img4.style.height = "50px";
+        img5.style.width = "50px";
+        img5.style.height = "50px";
+    }
+	 function changeImage4()
+	 {
+
+
+            document.getElementById("ar").value = "2";
+             img = document.getElementById("imgClickAndChange4");
+
+        img.style.width = "100px";
+        img.style.height = "100px";
+
+          img1 = document.getElementById("imgClickAndChange");
+          img2 = document.getElementById("imgClickAndChange2");
+           img3 = document.getElementById("imgClickAndChange3");
+            img4 = document.getElementById("imgClickAndChange");
+             img5 = document.getElementById("imgClickAndChange5");
+
+          img1.style.width = "50px";
+        img1.style.height = "50px";
+        img2.style.width = "50px";
+        img2.style.height = "50px";
+        img3.style.width = "50px";
+        img3.style.height = "50px";
+        img4.style.width = "50px";
+        img4.style.height = "50px";
+        img5.style.width = "50px";
+        img5.style.height = "50px";
+    }
+
+	 function changeImage5()
+	 {
+
+            document.getElementById("ar").value = "1";
+             img = document.getElementById("imgClickAndChange5");
+        img.style.width = "100px";
+        img.style.height = "100px";
+          img1 = document.getElementById("imgClickAndChange1");
+          img2 = document.getElementById("imgClickAndChange2");
+           img3 = document.getElementById("imgClickAndChange3");
+            img4 = document.getElementById("imgClickAndChange4");
+             img5 = document.getElementById("imgClickAndChange");
+
+          img1.style.width = "50px";
+        img1.style.height = "50px";
+        img2.style.width = "50px";
+        img2.style.height = "50px";
+        img3.style.width = "50px";
+        img3.style.height = "50px";
+        img4.style.width = "50px";
+        img4.style.height = "50px";
+        img5.style.width = "50px";
+        img5.style.height = "50px";
+    }
+</script>
+   </body>
+</html>
+
